@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using OctoPack.Tasks.Util;
 
 namespace OctoPack.Tasks
 {
@@ -52,7 +53,7 @@ namespace OctoPack.Tasks
             var assemblyFileVersion = info.FileVersion;
             var assemblyVersionInfo = info.ProductVersion;
 
-            if (assemblyFileVersion == assemblyVersionInfo)
+            if (assemblyFileVersion == assemblyVersionInfo || !SemanticVersionUtil.IsValidSemVer(assemblyVersionInfo))
             {
                 // Info version defaults to file version, so if they are the same, the customer probably doesn't want to use file version. Instead, use assembly version.
                 return new TaskItem(info.FileName, new Hashtable
