@@ -58,7 +58,7 @@ namespace OctoPack.Tasks
                 // Info version defaults to file version, so if they are the same, the customer probably doesn't want to use file version. Instead, use assembly version.
                 return new TaskItem(info.FileName, new Hashtable
                 {
-                    {"Version", assemblyVersion.ToString()},
+                    {"Version", assemblyFileVersion.ToString()},
                 });
             }
             
