@@ -10,7 +10,7 @@ param($installPath, $toolsPath, $package, $project)
   $itemsToRemove = @()
 
   # Allow many in case a past package was incorrectly uninstalled
-  $itemsToRemove += $msbuild.Xml.Imports | Where-Object { $_.Project.EndsWith($package.Id + '.targets') }
+  $itemsToRemove += $msbuild.Xml.Imports | Where-Object { $_.Project.EndsWith('OctoPack' + '.targets') }
   $itemsToRemove += $msbuild.Xml.Targets | Where-Object { $_.Name -eq "EnsureOctoPackImported" }
   
   # Remove the elements and save the project
